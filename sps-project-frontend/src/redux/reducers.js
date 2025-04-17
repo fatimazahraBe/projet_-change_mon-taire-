@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { prixReducer, tauxReducer, transactionReducer, updatePrixReducer ,} from "../Echange/reducer2";
 
 
 // Initial State
@@ -66,6 +67,12 @@ const rootReducer = combineReducers({
     groups: groupsReducer,
     clientgrp: clientgrpReducer,
     selectedAdminId: selectedAdminIdReducer,
+   
+   transaction: transactionReducer,
+   taux:tauxReducer,
+   prix:prixReducer,
+   updatePrix: updatePrixReducer
+
 });
 
 export default rootReducer;

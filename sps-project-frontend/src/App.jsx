@@ -22,6 +22,10 @@ const ChambresDisponibles = lazy(() => import('./Chambre/ChambresDisponibles.jsx
 const ReclamationPage = lazy(() => import('./reclamation/ReclamationPage'));
 const EtatChambre = lazy(() => import('./Chambre/etatChambre'));
 const Reservation = lazy(() => import('./Reservation/Reservation'));
+const Affichage = lazy(() => import('./Echange/Affichage'));
+const Definit_prix = lazy(() => import('./Echange/Definit_prix'));
+const Echange = lazy(() => import('./Echange/Echange'));
+
 
 
 
@@ -54,6 +58,9 @@ const App = () => {
         <Route path="/chambres-disponibles" element={<ChambresDisponibles />} />
         <Route path="/etat-chambre" element={<EtatChambre />} />
         <Route path="/reservations" element={<Reservation />} />
+        <Route path="/affichage" element={<Affichage/>} />
+        <Route path="/prixdevise" element={<Definit_prix/>} />
+        <Route path="/echange" element={<Echange/>} />
       </Routes>
       </Suspense>
       </OpenProvider>

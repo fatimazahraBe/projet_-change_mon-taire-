@@ -30,6 +30,7 @@ const ExpandRTable = ({
   const hasActions = handleEdit || handleDelete || renderCustomActions;
   const displayData = filteredData || data || [];
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  console.log("fgfdggggggggggggggggggg",displayData)
 
   // Calculate total minimum width including all columns
   const totalMinWidth = 50 + // Checkbox column

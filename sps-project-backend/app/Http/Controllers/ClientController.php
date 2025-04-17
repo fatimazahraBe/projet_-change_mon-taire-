@@ -95,8 +95,8 @@ class ClientController extends Controller
         // if (Gate::allows('create_clients')) {
                 $validatedData = $request->validate([
                     'CodeClient' => 'required|unique:clients,CodeClient',
-                    'raison_sociale' => 'required',
-                    'adresse' => 'required',
+                    'raison_sociale' => 'nullable',
+                    'adresse' => 'nullable',
                     'logoC' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                     'tele' => 'nullable',
                     'ville' => 'nullable',
@@ -112,6 +112,12 @@ class ClientController extends Controller
                     'mod_id'=>'nullable',
                     'seince'=>'nullable',
                     'montant_plafond'=>'nullable',
+                    'nom' => 'nullable',
+                    'prenom' => 'nullable',
+                    'civilite' => 'nullable',
+                    'nationalite'=>'nullable',
+                    'type'=>'required ',
+                    'cin'=>'nullable'
                 ]);
                 $validatedData['user_id'] = $request['user_id'] = Auth::id();
                 // Storing Photo

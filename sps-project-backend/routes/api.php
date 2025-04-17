@@ -23,7 +23,7 @@ use App\Http\Controllers\ModePaiementController;
 use App\Http\Controllers\RepresantantController;
 use App\Http\Controllers\RepresentantController;
 use App\Http\Controllers\TarifChambreController;
-use App\Http\Controllers\ClientSocieteController;
+use App\Http\Controllers\clientsocieteController;
 use App\Http\Controllers\ContactClientController;
 use App\Http\Controllers\SecteurClientController;
 use App\Http\Controllers\TypeReductionController;
@@ -46,16 +46,43 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EtatChambreController;
 use App\Http\Controllers\MaintenanceTypeController;
 use App\Http\Controllers\ReclamationChambreController;
+use App\Http\Controllers\DeviseController;
+use App\Http\Controllers\ClientsEchngeController;
+use App\Http\Controllers\TauxdechangeController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\DifinitPrixController;
+use App\Http\Controllers\EchangeController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
 Route::apiResource('reclamations_chambre',ReclamationChambreController::class);
+//taux de change root
+Route::get('/tauxdechange', [TauxdechangeController::class, 'index'])->name('tauxdechange');
+Route::post('/tauxdechange', [TauxdechangeController::class, 'store']);
+Route::put('/tauxdechange/{id}', [TauxdechangeController::class, 'update']);
+//clients d'echange
+Route::get('/clientEch', [ClientsEchngeController::class, 'index'])->name('clientEch');
+Route::post('/clientEch', [ClientsEchngeController::class, 'store']);
+Route::put('/clientEch/{id}', [ClientsEchngeController::class, 'update']);
+//devisees root
+Route::get('/devises', [DeviseController::class, 'index'])->name('devises');
+Route::post('/devises', [DeviseController::class, 'store']);
+Route::put('/devises/{id}', [DeviseController::class, 'update']);
+//root echange
+Route::get('/echange', [EchangeController::class, 'index'])->name('echange');
+// root transaction
+Route::get('transaction', [TransactionController::class, 'index']);
+Route::post('transaction', [TransactionController::class, 'store']);
+Route::put('transaction/{id}', [TransactionController::class, 'update']);
+Route::delete('transaction/{id}', [TransactionController::class, 'destroy']);
 
-
-
-
+//definit prix de devise
+Route::get('/definit_prix', [DifinitPrixController::class, 'index']);
+Route::post('/definit_prix', [DifinitPrixController::class, 'store']);
+Route::put('/definit_prix/{id}', [DifinitPrixController::class, 'update']);
+Route::delete('/definit_prix/{id}', [DifinitPrixController::class, 'destroy']);
 
 //groups routes
 Route::get('/groups', [GroupController::class, 'index']);

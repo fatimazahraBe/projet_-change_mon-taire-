@@ -605,6 +605,67 @@ const Navigation = () => {
             </StyledMenuItem>
 
           </List>
+
+            <StyledMenuItem
+              button
+              component={Link}
+              to="/affichage"
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                <FaFileInvoiceDollar style={{ color: 'white', fontSize: '20px' }} />
+              </ListItemIcon>
+              {open && (
+                <ListItemText 
+                  primary="Echange de monnais"
+                  primaryTypographyProps={{ 
+                    style: { 
+                      fontSize: '15px' 
+                    } 
+                  }}
+                />
+              )}
+            </StyledMenuItem>
+
+            <StyledMenuItem
+              button
+              component={Link}
+              to="/prixdevise"
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                <FaFileInvoiceDollar style={{ color: 'white', fontSize: '20px' }} />
+              </ListItemIcon>
+              {open && (
+                <ListItemText 
+                  primary="Definit prix"
+                  primaryTypographyProps={{ 
+                    style: { 
+                      fontSize: '15px' 
+                    } 
+                  }}
+                />
+              )}
+            </StyledMenuItem>
+
+            <StyledMenuItem
+              button
+              component={Link}
+              to="/echange"
+            >
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                <FaFileInvoiceDollar style={{ color: 'white', fontSize: '20px' }} />
+              </ListItemIcon>
+              {open && (
+                <ListItemText 
+                  primary="Echange"
+                  primaryTypographyProps={{ 
+                    style: { 
+                      fontSize: '15px' 
+                    } 
+                  }}
+                />
+              )}
+            </StyledMenuItem>
+          
           
           {/* Spacer to push logout to bottom */}
           <Box sx={{ flexGrow: 1 }} />
@@ -614,6 +675,7 @@ const Navigation = () => {
             button
             onClick={handleLogoutClick}
           >
+            
             <ListItemIcon>
               <ExitToAppIcon style={{ color: "red" }} />
             </ListItemIcon>

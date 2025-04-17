@@ -1037,7 +1037,9 @@ const chunks = chunkArray(tarifsReduction, chunkSize);
 const handleCategoryFilterChange = (catId) => {
   setSelectedCategory(catId);
 };
+const [typered , settypered]=useState(false)
 const handleAddTypeReduction = async () => {
+  settypered(true)
   try {
     const formData = new FormData();
     formData.append("code", newTypeReduction.code);
@@ -1056,6 +1058,7 @@ const handleAddTypeReduction = async () => {
                       }); // Hide the modal after success
                       setShowAddCategory(false);
                       fetchTarifReduction();
+                      settypered(false);
             }
 
   } catch (error) {
@@ -1063,8 +1066,8 @@ const handleAddTypeReduction = async () => {
       icon: "error",
       title: "Error!",
       text: error
-    }); 
-    setShowAddCategory(false);
+    });
+   
   }
 };
 const handleEditReduction
@@ -1101,13 +1104,18 @@ const handleEditTypeReduction
   setCategorie(categorieId?.id)
   setShowEditModal(true);
 };
+const [trifred , settarifred]=useState(false)
 const handleAddDesignation = async () => {
-  try {
-    const hasErrors = Object.values(tarifReductionErrors).some(error => error === true);
-      if (hasErrors) {
-        alert("Veuillez remplir tous les champs obligatoires.");
+  settarifred(true);
+ try {
+      const hasErrors = Object.values(tarifReductionErrors).some(error => error === true);
+       if (hasErrors) {
+        Swal.fire({
+          icon: "error",
+          title:"Veuillez remplir tous les champs obligatoires.",})
+         
         return;  
-      }
+    }
     const formData = new FormData();
     if (newDesignation.photo) {
       formData.append('photo', newDesignation.photo);
@@ -1188,6 +1196,14 @@ const handleSaveDesignation = async () => {
   } catch (error) {
     console.error("Erreur lors de la modification de la Tarif Reduction :", error.response.data);
   }
+};
+const displayAddTarifReduction = () => {
+  console.log("displayAddTarifReduction appelé !");
+  setShowAddDesignation(true)
+  setTypeErrors({
+    photo: true,
+    designation: true
+  })
 };
 const displayAddTypeReduction = () => {
   setShowAddCategory(true)
@@ -1315,7 +1331,7 @@ const displayAddTypeReduction = () => {
                     icon={faPlus}
                     className="text-primary me-2"
                     style={{ cursor: "pointer" }}
-                    onClick={displayAddTypeReduction}
+                    onClick={displayAddTarifReduction}
                   />
                   <Form.Label className="me-3" style={{ minWidth: "150px" }}>Tarif Reduction</Form.Label>
                   <div style={{ flexGrow: 1, position: "relative" }}>
@@ -1401,7 +1417,7 @@ const displayAddTypeReduction = () => {
                   <Form.Control
                     type="file"
                     name="photo"
-                    isInvalid={!!tarifReductionErrors.photo}
+                    isInvalid={trifred&&!!tarifReductionErrors.photo}
                     onChange={(e) => setNewDesignation({ ...newDesignation, photo: e.target.files[0] })}
                     className="form-control"
                     lang="fr"
@@ -1413,7 +1429,7 @@ const displayAddTypeReduction = () => {
                 type="text"
                 placeholder="Designation"
                 name="designation"
-                isInvalid={!!tarifReductionErrors.designationAdd}
+                isInvalid={trifred&&!!tarifReductionErrors.designationAdd}
                 onChange={(e) => setNewDesignation({ ...newDesignation, designation: e.target.value })}
               />
             </Form.Group>
@@ -1579,7 +1595,7 @@ const displayAddTypeReduction = () => {
               <Form.Control
                 type="text"
                 placeholder="Code Reduction"
-                isInvalid={!!typeErrors.code}
+                isInvalid={typered&&!!typeErrors.code}
                 name="code"
                 onChange={(e) => setNewTypeReduction({ ...newTypeReduction, code: e.target.value })}
               />
@@ -1589,7 +1605,7 @@ const displayAddTypeReduction = () => {
               <Form.Control
                 type="text"
                 placeholder="Type Reduction"
-                isInvalid={!!typeErrors.type_reduction}
+                isInvalid={typered&&!!typeErrors.type_reduction}
                 name="type_reduction"
                 onChange={(e) => setNewTypeReduction({ ...newTypeReduction, type_reduction: e.target.value })}
               />
