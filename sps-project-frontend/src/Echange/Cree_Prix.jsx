@@ -618,16 +618,7 @@ const handleSubmit = async (e) => {
     />
 </div>
         </div>
-        {selectedItems.length > 0 && (
-            <Fab 
-                variant="extended"
-                onClick={handleDeleteSelected}
-                style={{ backgroundColor: "#f44336", color: "white" }}
-            >
-                <FontAwesomeIcon icon={faTrash} className="me-2" />
-                Supprimer ({selectedItems.length})
-            </Fab>
-        )}
+      
     </div>
     
     {/* Formulaire de filtre complet qui apparaît au clic sur l'icône */}
@@ -640,7 +631,6 @@ const handleSubmit = async (e) => {
             onResetFilters={handleResetFilters}
         />
     </Collapse>
-    
     <ExpandRTable
         columns={columns}
         data={formattedData}
@@ -653,6 +643,7 @@ const handleSubmit = async (e) => {
         handleCheckboxChange={handleCheckboxChange}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
+        handleDeleteSelected={handleDeleteSelected}
         rowsPerPage={rowsPerPage}
         page={page}
         handleChangePage={handleChangePage}
@@ -661,7 +652,9 @@ const handleSubmit = async (e) => {
         toggleRowExpansion={toggleRowExpansion}
         renderExpandedRow={renderExpandedRow}
     />
+    
 </div>
+
                 </Box>
             </Box>
         </ThemeProvider>

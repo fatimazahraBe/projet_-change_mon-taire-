@@ -52,6 +52,8 @@ use App\Http\Controllers\TauxdechangeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\DifinitPrixController;
 use App\Http\Controllers\EchangeController;
+use App\Http\Controllers\ApiPrixController;
+use App\Http\Controllers\ControllerTRansationApi;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -77,6 +79,18 @@ Route::get('transaction', [TransactionController::class, 'index']);
 Route::post('transaction', [TransactionController::class, 'store']);
 Route::put('transaction/{id}', [TransactionController::class, 'update']);
 Route::delete('transaction/{id}', [TransactionController::class, 'destroy']);
+//root prix par api
+Route::get('prixApi', [ApiPrixController::class, 'index']);
+Route::post('prixApi', [ApiPrixController::class, 'store']);
+Route::put('prixApi/{id}', [ApiPrixController::class, 'update']);
+Route::delete('prixApi/{id}', [ApiPrixController::class, 'destroy']);
+
+
+Route::get('transactionapi', [ControllerTRansationApi::class, 'index']);
+Route::post('transactionapi', [ControllerTRansationApi::class, 'store']);
+Route::put('transactionapi/{id}', [ControllerTRansationApi::class, 'update']);
+Route::delete('transactionapi/{id}', [ControllerTRansationApi::class, 'destroy']);
+
 
 //definit prix de devise
 Route::get('/definit_prix', [DifinitPrixController::class, 'index']);

@@ -9,7 +9,12 @@ class Devise extends Model
 {
         use HasFactory;
     
-        protected $fillable = ['code', 'name', 'symbol'];
+        protected $fillable = [
+            'code', 
+            'name', 
+            'symbol', 
+            'icone'
+        ];
     
         /**
          * Une devise peut être utilisée dans plusieurs transactions.
@@ -27,6 +32,15 @@ class Devise extends Model
         public function toDefiniyprix()
         {
             return $this->hasMany(definie_prixes::class, 'devseID');
+        }
+
+        public function todevisAchet()
+        {
+            return $this->hasMany(PrixApi::class, 'devise_achat');
+        }
+        public function todevisvente()
+        {
+            return $this->hasMany(PrixApi::class, 'devise_vente');
         }
     }
 

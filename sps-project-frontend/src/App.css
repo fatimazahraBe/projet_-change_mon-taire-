@@ -34,6 +34,61 @@ background-color: #f5f5f5 !important;
  /* Espacement pour afficher le tableau à côté du formulaire */
 }
 
+
+
+
+
+
+
+.photo-thumbnail {
+  position: relative;
+  display: inline-block;
+}
+
+.photo-count {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 2px 5px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+
+.photos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+}
+
+.photo-item {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.main-photo {
+  border: 2px solid #007bff;
+}
+
+.main-badge {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: #007bff;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+
+
+
+
 a {
   text-decoration: none;
 }
@@ -123,7 +178,16 @@ background-color: #f1f1f1;
   border-collapse: collapse;
   width: 100%;
 }
-
+td{
+  text-align: center !important;
+}
+.border_tab{
+  border-collapse: collapse !important;
+}
+.border_tab td ,.border_tab th{
+border: 2px solid #ddd !important;
+padding: 8px !;
+}
 .custom-table th, .custom-table td {
   border: 1px solid #cb4a4a !important;
   padding: 8px;
@@ -317,15 +381,9 @@ color: white !important;
   width: 49% !important;
   padding-bottom: -20px !important;
   margin-bottom: 5px;
-  border: 1px solid #ddd;
+  /* border: 1px solid #ddd; */
 }
-.bgSecteur{
-  background-color: #fff;
-  width: 100% !important;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
 
-}
 .siteclient td{
   background-color: #dcfffe !important;
 }
@@ -382,3 +440,144 @@ background-color:#00afaa !important;
 
 /* Styles pour le groupe de formulaire */
 
+/* Updated Carousel Styles */
+.bgSecteur {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 15px 5px;
+  margin-bottom: 20px;
+  border: 1px solid #eaeaea;
+}
+
+/* Category Item Styling */
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+  padding: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.category-item:hover {
+  transform: translateY(-3px);
+}
+
+.category-item.active {
+  transform: translateY(-5px);
+}
+
+/* Image Styling */
+.category-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border: 3px solid #e0e0e0;
+  padding: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.category-item:hover .category-img {
+  border-color: #bbd8d7;
+}
+
+.category-item.active .category-img {
+  border: 3px solid #00afaa;
+}
+
+.category-item.active .category-img.selected {
+  border: 3px solid #00afaa;
+  box-shadow: 0 3px 8px rgba(0, 175, 170, 0.3);
+}
+
+/* Text Styling */
+.category-text {
+  margin-top: 8px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.category-item.active .category-text {
+  color: #00afaa;
+  font-weight: 600;
+}
+
+/* Carousel Controls */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px;
+  height: 40px;
+  top: 40%;
+  transform: translateY(-50%);
+  opacity: 1;
+}
+
+.carousel-control-prev {
+  left: 5px;
+}
+
+.carousel-control-next {
+  right: 5px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Custom Arrow Icons */
+.carousel-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.carousel-arrow:hover {
+  background-color: #00afaa;
+  transform: scale(1.1);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.carousel-item {
+  animation: fadeIn 0.5s ease;
+}
+
+
+.carousel-control-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.carousel-control-icon:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: scale(1.05);
+}
